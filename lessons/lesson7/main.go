@@ -95,7 +95,7 @@ type GoodCop struct {
 }
 
 // Interogate is a good cop action
-func (gc GoodCop) Interogate(s []string) {
+func (gc GoodCop) interogate(s []string) {
 	random := rand.Intn(len(s))
 	fmt.Println(gc.Name + " says: \"" + s[random] + "\"")
 }
@@ -106,21 +106,21 @@ type BadCop struct {
 }
 
 // Interogate is a bad cop action
-func (gc BadCop) Interogate(s []string) {
+func (gc BadCop) interogate(s []string) {
 	random := rand.Intn(len(s))
 	fmt.Println(gc.Name + " says: \"" + s[random] + "\"")
 }
 
 type interogator interface {
-	Interogate(s []string)
+	interogate(s []string)
 }
 
-// RandomizeInterogation is a function exporting module private func results
-func RandomizeInterogation(i interogator, gs []string, bs []string) {
+// SendCopIntoRoom is a function exporting module private func results
+func SendCopIntoRoom(i interogator, gs []string, bs []string) {
 	_, ok := i.(GoodCop)
 	if ok {
-		i.Interogate(gs)
+		i.interogate(gs)
 	} else {
-		i.Interogate(bs)
+		i.interogate(bs)
 	}
 }

@@ -88,10 +88,16 @@ func main() {
 		"Keep lying, and you'll regret it. We can do this the easy way or the hard way.",
 	}
 
-	// cop1 := lesson7.BadCop{Name: "Terry"}
+	cop1 := lesson7.BadCop{Name: "Terry"}
 	cop2 := lesson7.GoodCop{Name: "Brandon"}
+	cop3 := lesson7.BadCop{Name: "Arnie"}
 
-	lesson7.RandomizeInterogation(cop2, goodSentences, badSentences)
+	fmt.Println("\nGood cop goes in:")
+	lesson7.SendCopIntoRoom(cop2, goodSentences, badSentences)
+	fmt.Println("\nBad cop goes in:")
+	lesson7.SendCopIntoRoom(cop1, goodSentences, badSentences)
+	fmt.Println("\nFuck the good cops, let's send the terminator in!")
+	lesson7.SendCopIntoRoom(cop3, goodSentences, badSentences)
 
 	// NOTE:  API DETOUR
 	// api.Run()
