@@ -5,12 +5,12 @@ package main
 import (
 	"fmt"
 	/*
-					"hello-world/lessons/lesson1"
-					"hello-world/lessons/lesson2"
-					"hello-world/lessons/lesson3"
-					"hello-world/lessons/lesson4"
-					"hello-world/lessons/lesson5"
-				"hello-world/api"
+		"hello-world/lessons/lesson1"
+		"hello-world/lessons/lesson2"
+		"hello-world/lessons/lesson3"
+		"hello-world/lessons/lesson4"
+		"hello-world/lessons/lesson5"
+		"hello-world/api"
 		"hello-world/lessons/lesson6"
 	*/
 	"hello-world/lessons/lesson7"
@@ -41,37 +41,34 @@ func main() {
 	// Ie FilePrinter, VenueCostCalculator, ShapeAreaCalculator etc it makes it most cleraly obvious to a person reading the code
 	// what types would a function receiving this interface likely deal with and what it would do with them.
 
-	/*
-		venue1 := lesson7.Restaurant{
-				Type:              "Restaurant",
-				Name:              "Madzia's Dream Feast",
-				FloorAreaInMeters: 1200,
-				RentPricePerMeter: 300.99,
-			}
+	venue1 := lesson7.Restaurant{
+		Name:              "Madzia's Dream Feast",
+		FloorAreaInMeters: 1200,
+		RentPricePerMeter: 300.99,
+	}
 
-			venue2 := lesson7.Hotel{
-				Type:              "Hotel",
-				Name:              "The Grand Budapest",
-				FloorAreaInMeters: 12000,
-				RentPricePerMeter: 1000.99,
-			}
+	venue2 := lesson7.Hotel{
+		Name:              "The Grand Budapest",
+		FloorAreaInMeters: 12000,
+		RentPricePerMeter: 1000.99,
+	}
 
-			venue3 := lesson7.Cinema{
-				Type:              "Cinema",
-				Name:              "CinemaShitty",
-				FloorAreaInMeters: 7500,
-				RentPricePerMeter: 549.99,
-			}
+	venue3 := lesson7.Cinema{
+		Name:              "CinemaShitty",
+		FloorAreaInMeters: 7500,
+		RentPricePerMeter: 549.99,
+	}
 
-			venuesList := []lesson7.VenueDetailPrinter{venue1, venue2, venue3}
+	venuesList := []lesson7.VenueDetailPrinter{venue1, venue2, venue3}
 
-			for _, v := range venuesList {
-				lesson7.PrintDetails(v)
-				fmt.Println()
-			}
-	*/
+	for _, v := range venuesList {
+		lesson7.PrintDetails(v)
+		fmt.Println()
+	}
 
 	// part two cops:
+	// NOTE: Good code practiced: - explicitly naming interface params, using redable type assertion switch
+
 	goodSentences := []string{
 		"Hey, we're not here to make your life difficult. We just want to get to the truth.",
 		"Listen, I know you're in a tough spot. Help us out, and we can help you.",
@@ -88,16 +85,24 @@ func main() {
 		"Keep lying, and you'll regret it. We can do this the easy way or the hard way.",
 	}
 
+	terminatorSentences := []string{
+		"Hasta la vista, baby... and your alibi.",
+		"I'll be back for more information about this incident... repeatedly.",
+		"Your story is like a virus - it's been terminated.",
+		"You're not very good at this game... I'm going to have to reboot you.",
+		"The machine has spoken... and it says you're lying.",
+	}
+
 	cop1 := lesson7.BadCop{Name: "Terry"}
 	cop2 := lesson7.GoodCop{Name: "Brandon"}
-	cop3 := lesson7.BadCop{Name: "Arnie"}
+	cop3 := lesson7.Terminator{Name: "Arnie"}
 
 	fmt.Println("\nGood cop goes in:")
-	lesson7.SendCopIntoRoom(cop2, goodSentences, badSentences)
+	lesson7.SendCopIntoRoom(cop2, goodSentences, badSentences, terminatorSentences)
 	fmt.Println("\nBad cop goes in:")
-	lesson7.SendCopIntoRoom(cop1, goodSentences, badSentences)
+	lesson7.SendCopIntoRoom(cop1, goodSentences, badSentences, terminatorSentences)
 	fmt.Println("\nFuck the good cops, let's send the terminator in!")
-	lesson7.SendCopIntoRoom(cop3, goodSentences, badSentences)
+	lesson7.SendCopIntoRoom(cop3, goodSentences, badSentences, terminatorSentences)
 
 	// NOTE:  API DETOUR
 	// api.Run()
